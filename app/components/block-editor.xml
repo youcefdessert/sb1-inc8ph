@@ -1,0 +1,76 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" shownModally="true" class="bg-gray-50">
+    <ActionBar class="bg-white">
+        <NavigationButton text="Cancel" tap="{{ close }}" ios.position="left" />
+        <Label text="{{ block.title || 'New Block' }}" />
+        <ActionItem text="Save" tap="{{ save }}" ios.position="right" class="text-blue-500" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4 space-y-4">
+            <!-- Title Input -->
+            <TextField text="{{ block.title }}" hint="Title" class="text-lg p-4 bg-white rounded-lg" />
+
+            <!-- Quick Subject Selection -->
+            <ScrollView orientation="horizontal" class="h-12">
+                <StackLayout orientation="horizontal" class="space-x-2">
+                    <Label text="Applied Arts" class="px-4 py-2 bg-white rounded-full" tap="{{ selectSubject }}" />
+                    <Label text="Biology" class="px-4 py-2 bg-white rounded-full" tap="{{ selectSubject }}" />
+                    <Label text="Computer Science" class="px-4 py-2 bg-white rounded-full" tap="{{ selectSubject }}" />
+                </StackLayout>
+            </ScrollView>
+
+            <!-- Duration Presets -->
+            <Label text="{{ block.title }}" class="text-2xl font-bold" />
+            <GridLayout columns="*, *, *, *" class="space-x-2">
+                <Label col="0" text="5 min" class="text-center p-2 bg-white rounded-full" tap="{{ setDuration }}" />
+                <Label col="1" text="15 min" class="text-center p-2 bg-white rounded-full" tap="{{ setDuration }}" />
+                <Label col="2" text="30 min" class="text-center p-2 bg-white rounded-full" tap="{{ setDuration }}" />
+                <Label col="3" text="1 h" class="text-center p-2 bg-white rounded-full" tap="{{ setDuration }}" />
+            </GridLayout>
+
+            <!-- Time Selection -->
+            <GridLayout columns="*, *, *" class="space-x-2">
+                <StackLayout col="0" class="bg-white p-4 rounded-lg">
+                    <Label text="Day" class="text-gray-500" />
+                    <Label text="{{ block.day }}" class="text-lg" tap="{{ showDayPicker }}" />
+                </StackLayout>
+                <StackLayout col="1" class="bg-white p-4 rounded-lg">
+                    <Label text="Start" class="text-gray-500" />
+                    <Label text="{{ block.startTime, 'HH:mm' }}" class="text-lg" tap="{{ showTimePicker }}" />
+                </StackLayout>
+                <StackLayout col="2" class="bg-white p-4 rounded-lg">
+                    <Label text="End" class="text-gray-500" />
+                    <Label text="{{ block.endTime, 'HH:mm' }}" class="text-lg" tap="{{ showTimePicker }}" />
+                </StackLayout>
+            </GridLayout>
+
+            <!-- Color Selection -->
+            <GridLayout rows="auto, auto" columns="*, *, *, *, *" class="bg-white p-4 rounded-lg">
+                <Repeater items="{{ colors }}" row="0" colSpan="5">
+                    <Repeater.itemTemplate>
+                        <ContentView class="m-1">
+                            <Label class="w-8 h-8 rounded-full" backgroundColor="{{ color }}" 
+                                   tap="{{ onColorSelect }}" />
+                        </ContentView>
+                    </Repeater.itemTemplate>
+                </Repeater>
+                <Repeater items="{{ colors2 }}" row="1" colSpan="5">
+                    <Repeater.itemTemplate>
+                        <ContentView class="m-1">
+                            <Label class="w-8 h-8 rounded-full" backgroundColor="{{ color }}" 
+                                   tap="{{ onColorSelect }}" />
+                        </ContentView>
+                    </Repeater.itemTemplate>
+                </Repeater>
+            </GridLayout>
+
+            <!-- Location -->
+            <TextField text="{{ block.location }}" hint="Location (e.g., C22 - Floor 2)" 
+                      class="p-4 bg-white rounded-lg" />
+
+            <!-- Delete Button -->
+            <Button text="Delete event" tap="{{ deleteBlock }}" 
+                    class="text-red-500 bg-white p-4 rounded-lg" />
+        </StackLayout>
+    </ScrollView>
+</Page>

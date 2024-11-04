@@ -1,0 +1,6 @@
+<GridLayout xmlns:gestures="@nativescript/core/ui/gestures" columns="*" rows="*" class="time-block" gesture="pan,longPress">
+    <StackLayout>
+        <Label text="{{ title }}" class="font-medium"/>
+        <Label text="{{ startTime, 'HH:mm' }}" class="text-sm"/>
+    </StackLayout>
+</GridLayout>

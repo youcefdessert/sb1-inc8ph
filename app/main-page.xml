@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+    <ActionBar title="Calendar" class="action-bar">
+        <ActionBar.actionItems>
+            <ActionItem ios.position="right" text="+" tap="{{ addBlock }}" />
+        </ActionBar.actionItems>
+    </ActionBar>
+
+    <GridLayout rows="auto, *, auto">
+        <!-- Week days header -->
+        <GridLayout row="0" columns="*, *, *, *, *" class="p-2 bg-white">
+            <Label col="0" text="MON" class="text-center font-bold" />
+            <Label col="1" text="TUE" class="text-center font-bold" />
+            <Label col="2" text="WED" class="text-center font-bold" />
+            <Label col="3" text="THU" class="text-center font-bold" />
+            <Label col="4" text="FRI" class="text-center font-bold" />
+        </GridLayout>
+
+        <!-- Calendar content -->
+        <ScrollView row="1">
+            <StackLayout>
+                <Label text="Welcome to Calendar App!" class="text-center p-4" />
+                <Button text="Add New Block" tap="{{ addBlock }}" class="btn btn-primary m-4" />
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Bottom schedule selector -->
+        <StackLayout row="2" class="p-2 bg-white">
+            <Button text="Select Schedule" tap="{{ showSchedules }}" class="btn" />
+        </StackLayout>
+    </GridLayout>
+</Page>

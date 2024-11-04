@@ -1,0 +1,13 @@
+<BottomSheet>
+    <GridLayout rows="auto, *">
+        <Label text="Schedules" class="text-lg font-bold p-4"/>
+        <ListView row="1" items="{{ schedules }}">
+            <ListView.itemTemplate>
+                <GridLayout columns="*, auto" class="p-4 border-b border-gray-200">
+                    <Label text="{{ name }}" col="0"/>
+                    <Button text="Select" tap="{{ onSelect }}" col="1"/>
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>
+    </GridLayout>
+</BottomSheet>
